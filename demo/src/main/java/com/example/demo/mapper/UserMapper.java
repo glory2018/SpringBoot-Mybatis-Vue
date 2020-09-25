@@ -20,5 +20,5 @@ public interface UserMapper {
 
     List<User> list(Map<String, Object> params);
 
-    User findUser(User user);
+    User get(Map map);
 }

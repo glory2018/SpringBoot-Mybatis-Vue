@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!--导入属性配置 -->
-    <properties resource="jdbc.properties"></properties>
+    <properties resource="generator.properties"/>
     <!--mysql 连接数据库jar 这里选择自己本地位置-->
     <classPathEntry location="${jdbc.driverLocation}"/>
     <context id="testTables" targetRuntime="MyBatis3">
@@ -12,7 +12,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.jdbcUrl}" userId="${jdbc.user}"
+        <jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.url}" userId="${jdbc.username}"
                         password="${jdbc.password}">
             <!-- 只生成自己指定的 database 中的 User 表-->
             <property name="nullCatalogMeansCurrent" value="true"/>
@@ -40,7 +40,7 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
         <!--tableName:指定了表名 domainObjectName:指定了实体类的名称 -->
-        <table tableName="user" domainObjectName="User" enableCountByExample="false"
+        <table tableName="ums_%" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>

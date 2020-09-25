@@ -60,6 +60,11 @@ export default {
         if (valid) {
           this.$axios.post('/login', this.user).then((res) => {
             if (res.data.data) {
+              const jwt = res.headers['authorization']
+              const userInfo = res.data.data
+              // 把数据共享出去
+              _this.$store.commit('SET_TOKEN', jwt)
+              _this.$store.commit('SET_USERINFO', userInfo)
               _this.$router.push('/user')
             } else {
               this.$notify({

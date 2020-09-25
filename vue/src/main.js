@@ -6,8 +6,11 @@ import router from './router'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
+import store from './store'
+import './axios'
+import './permission'
 Vue.prototype.$axios = axios //
-axios.defaults.baseURL = '/api'
+
 Vue.use(Element)
 Vue.config.productionTip = false
 
@@ -15,6 +18,9 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  store,
+  components: {
+    App
+  },
   template: '<App/>'
 })

@@ -10,13 +10,17 @@ package com.example.demo.controller;
  */
 
 import com.example.demo.common.CommonPage;
-import com.example.demo.common.Result;
+import com.example.demo.common.CommonResult;
 import com.example.demo.entity.User;
 import com.example.demo.service.IUserService;
 import com.github.pagehelper.Page;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@Api("User API")
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
@@ -24,21 +28,31 @@ public class UserController {
     private IUserService userService;
 
     @GetMapping("/detail/{id}")
-    public Result detail(@PathVariable(name = "id") Integer id) {
-        User user = userService.detail(id);
-        return Result.success(user);
+    @ApiOperation(value = "user detail", notes = "get a user detail")
+    public CommonResult detail(@PathVariable(name = "id") Integer id) {
+        User user = userService.get(id);
+        return CommonResult.success(user);
     }
 
     @GetMapping("/list")
-    public Result list(@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
-                       @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
+    @ApiOperation(value = "user list", notes = "get all user list")
+    public CommonResult list(@RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize,
+                             @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum) {
         Page page = userService.list(pageNum, pageSize);
-        return Result.success(CommonPage.restPage(page));
+        return CommonResult.success(CommonPage.restPage(page));
     }
 
+    /**
+     * 登录之后才能访问的接口
+     *
+     * @param user
+     * @return
+     */
+//    @RequiresAuthentication
     @PostMapping("/update")
-    public Result update(@RequestBody User user) {
+    @ApiOperation(value = "user update", notes = "update user detail")
+    public CommonResult update(@Validated @RequestBody User user) {
         int num = userService.update(user);
-        return Result.success(num);
+        return CommonResult.success(num);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.UmsPermission;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.IUserService;
@@ -18,11 +19,6 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public User detail(Integer id) {
-        return userMapper.selectByPrimaryKey(id);
-    }
-
-    @Override
     public Page list(Integer pageNum, Integer pageSize) {
         Map<String, Object> params = new HashMap();
         Page page = PageHelper.startPage(pageNum, pageSize);
@@ -34,8 +30,30 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User findUser(User user) {
-        return userMapper.findUser(user);
+    public User get(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public User get(Map map) {
+        return userMapper.get(map);
+    }
+
+    @Override
+    public User getAdminByUsername(String username) {
+        Map map = new HashMap();
+        map.put("username", username);
+        return get(map);
+    }
+
+    @Override
+    public List<UmsPermission> getPermissionList(Integer id) {
+        return null;
+    }
+
+    @Override
+    public int insert(User user) {
+        return userMapper.insert(user);
     }
 
     @Override

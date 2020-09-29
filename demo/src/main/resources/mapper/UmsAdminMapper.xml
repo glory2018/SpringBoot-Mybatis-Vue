@@ -19,7 +19,7 @@
     <select id="getAdminByUsername" parameterType="java.lang.String" resultType="com.example.demo.entity.UmsAdmin">
         select
         <include refid="Base_Column_List"/>
-        from user
+        from ums_admin
         where username = #{username,jdbcType=VARCHAR}
     </select>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">

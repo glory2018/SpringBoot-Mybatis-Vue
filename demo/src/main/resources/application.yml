@@ -5,14 +5,11 @@ spring:
     username: root
     password: 123456
 mybatis:
-  mapper-locations: classpath:/mapper/*.xml
+  mapper-locations: classpath:mapper/*.xml
 server:
   port: 8888
 jwt:
-  # 加密密钥
-  secret: abcdefg1234567
-  # token有效时长
-  expiration: 3600
-  # header 名称
-  tokenHead: token
-  tokenHeader: tokenHeader
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mall-admin-secret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24*7)
+  tokenHead: 'Bearer '  #JWT负载中拿到开头

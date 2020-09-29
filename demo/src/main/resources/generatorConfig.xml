@@ -40,7 +40,7 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
         <!--tableName:指定了表名 domainObjectName:指定了实体类的名称 -->
-        <table tableName="ums_%" enableCountByExample="false"
+        <table tableName="ums_admin_role_relation" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>

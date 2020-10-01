@@ -2,9 +2,7 @@ package com.example.demo.entity;
 
 public class UmsAdminRoleRelation {
     private Long id;
-
     private Long adminId;
-
     private Long roleId;
 
     public Long getId() {

@@ -20,7 +20,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -39,9 +38,9 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     private PasswordEncoder passwordEncoder;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
-    @Resource
+    @Autowired
     private UmsAdminMapper adminMapper;
-    @Resource
+    @Autowired
     private UmsAdminRoleRelationMapper adminRoleRelationMapper;
 
     @Override

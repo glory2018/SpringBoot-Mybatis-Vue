@@ -10,7 +10,7 @@ import store from './store'
 import './axios'
 import './permission'
 Vue.prototype.$axios = axios //
-
+axios.defaults.baseURL = '/api'
 Vue.use(Element)
 Vue.config.productionTip = false
 

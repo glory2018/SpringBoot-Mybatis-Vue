@@ -58,7 +58,7 @@ export default {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$axios.post('/login', this.user).then((res) => {
+          this.$axios.post('/admin/login', this.user).then((res) => {
             if (res.data.data) {
               const jwt = res.headers['authorization']
               const userInfo = res.data.data

@@ -7,7 +7,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 server:
-  port: 2001
+  port: 9002
 jwt:
   tokenHeader: Authorization #JWT存储的请求头
   secret: mall-admin-secret #JWT加解密使用的密钥

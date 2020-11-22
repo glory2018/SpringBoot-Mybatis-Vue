@@ -70,7 +70,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         String token = null;
         try {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            if (!passwordEncoder.matches(password, passwordEncoder.encode(userDetails.getPassword()))) {
+            if (!passwordEncoder.matches(password, userDetails.getPassword())) {
                 throw new BadCredentialsException("密码不正确");
             }
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());

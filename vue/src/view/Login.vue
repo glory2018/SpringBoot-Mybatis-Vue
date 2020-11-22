@@ -36,7 +36,7 @@ export default {
     }
     return {
       user: {
-        password: '123456',
+        password: 'macro123',
         username: 'admin'
       },
       rules: {
@@ -59,12 +59,13 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.$axios.post('/admin/login', this.user).then((res) => {
-            if (res.data.data) {
-              const jwt = res.headers['authorization']
-              const userInfo = res.data.data
+            debugger
+            if (res.data) {
+              // const jwt = res.headers['authorization']
+              const jwt = res.data.toker
               // 把数据共享出去
               _this.$store.commit('SET_TOKEN', jwt)
-              _this.$store.commit('SET_USERINFO', userInfo)
+              // _this.$store.commit('SET_USERINFO', userInfo)
               _this.$router.push('/user')
             } else {
               this.$notify({
